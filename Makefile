@@ -46,16 +46,16 @@ LDFLAGS=$(CMSISFL) -static -mcpu=cortex-m3 -mthumb -mthumb-interwork \
 LDFLAGS+=-L$(CMSIS)/lib -lDriversLPC17xxgnu
 
 # Name of the binary being built
-EXECNAME	= bin/miniproject_1
+EXECNAME	= bin/mini_project_2
 
 # Source files provided by the user to build the project
-OBJ		= miniproject_1.o serial.o
+OBJ		= main.o delay.o serial.o uart.o i2c.o lcd.o keypad.o
 
 # Commands handled by this makefile
-all: 	miniproject_1
+all: 	main
 	@echo "Build finished"
 
-miniproject_1: $(OBJ)
+main: $(OBJ)
 	mkdir -p bin # prevent error "No such file or directory" during linking
 	$(CC) -o $(EXECNAME) $(OBJ) $(LDFLAGS)
 	$(OBJCOPY) -I elf32-little -O binary $(EXECNAME) $(EXECNAME).bin

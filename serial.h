@@ -1,4 +1,3 @@
-
 // Serial code include file
 int read_usb_serial_none_blocking(char *buf,int length);
 
